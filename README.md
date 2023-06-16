@@ -1,4 +1,6 @@
-# Public Access for Bucket (AWS)
+# AWS
+
+## Public Access for Bucket
 
 ```json
 {
@@ -15,7 +17,9 @@
 }
 ```
 
-## Tibe (AWS)
+# Tebi
+
+## Public Access
 
 ```json
 {
@@ -25,20 +29,14 @@
         {
             "Sid": "IP-UA-Allow",
             "Effect": "Allow",
-            "Action": [
-                "s3:ListObjects"
-            ],
+            "Action": ["s3:ListObjects"],
             "Resource": "*",
             "Condition": {
                 "NoIpAddress": {
-                    "aws:SourceIp": [
-                        "192.168.0.1"
-                    ]
+                    "aws:SourceIp": ["192.168.0.1"]
                 },
                 "StringEquals": {
-                    "aws:UserAgent": [
-                        "curl/7.68.0"
-                    ]
+                    "aws:UserAgent": ["curl/7.68.0"]
                 }
             }
         }
@@ -46,7 +44,7 @@
 }
 ```
 
-## Allow by IP address list
+## Public Access from browser ✅
 
 ```json
 {
@@ -56,10 +54,7 @@
         {
             "Sid": "IP-Allow",
             "Effect": "Allow",
-            "Action": [
-                "s3:GetObject",
-                "s3:HeadObject"
-            ],
+            "Action": ["s3:GetObject", "s3:HeadObject"],
             "Resource": "*",
             "Condition": {
                 "IpAddress": {
@@ -70,10 +65,7 @@
                     ]
                 },
                 "NotIpAddress": {
-                    "aws:SourceIp": [
-                        "192.168.0.98",
-                        "192.168.0.99"
-                    ]
+                    "aws:SourceIp": ["192.168.0.98", "192.168.0.99"]
                 }
             }
         }
@@ -83,10 +75,7 @@
 
 `103.134.205.112` is current public ip of unilink.
 
-
-
 ## Allow all public (Tebi)
-
 
 ```json
 {
@@ -96,18 +85,11 @@
         {
             "Sid": "IP-Allow",
             "Effect": "Allow",
-            "Action": [
-                "s3:GetObject",
-                "s3:HeadObject"
-            ],
+            "Action": ["s3:GetObject", "s3:HeadObject"],
             "Resource": "*",
             "Condition": {
-             
                 "NotIpAddress": {
-                    "aws:SourceIp": [
-                        "192.168.0.98",
-                        "192.168.0.99"
-                    ]
+                    "aws:SourceIp": ["192.168.0.98", "192.168.0.99"]
                 }
             }
         }
